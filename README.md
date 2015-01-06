@@ -20,4 +20,4 @@ Make sure you have [Vagrant][vagrant] and [Virtual Box][vbox] installed. To get 
 
 Wait while Vagrant sets up and provisions your VM.
 
-After vagrant finishes, you can access the Go server at `http://192.168.192.169:8153`. This should be a full functional Go setup. There is a server and agent co located on the same VM.
+After vagrant finishes, you can access the Go server at `http://192.168.192.169:8153`. This should be a fully functional Go setup. There is a server and agent co located on the same VM.
