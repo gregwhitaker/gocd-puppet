@@ -19,3 +19,5 @@ Make sure you have [Vagrant][vagrant] and [Virtual Box][vbox] installed. To get 
 [vbox]: https://www.virtualbox.org/
 
 Wait while Vagrant sets up and provisions your VM.
+
+After vagrant finishes, you can access the Go server at `http://192.168.192.169:8153`
