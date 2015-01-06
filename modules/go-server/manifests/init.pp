@@ -1,6 +1,9 @@
 class go-server(
   $version = undef
 ) {
+
+  include java
+
   file { '/opt/go-server':
     ensure => directory,
   }
