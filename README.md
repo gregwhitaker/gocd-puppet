@@ -17,3 +17,5 @@ Make sure you have [Vagrant][vagrant] and [Virtual Box][vbox] installed. To get 
 
 [vagrant]: https://www.vagrantup.com/
 [vbox]: https://www.virtualbox.org/
+
+Wait while Vagrant sets up and provisions your VM.
