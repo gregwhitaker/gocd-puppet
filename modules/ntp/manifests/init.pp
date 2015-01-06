@@ -1,24 +1,24 @@
 class ntp {
   case $operatingsystem {
     centos, redhat: {
-      $service_name: 'ntpd'
-      $conf_file: 'ntp.conf.el'
+      $service_name= 'ntpd'
+      $conf_file= 'ntp.conf.el'
     }
     debian, ubuntu: {
-      $service_name: 'ntp'
-      $conf_file: 'ntp.conf'
+      $service_name= 'ntp'
+      $conf_file= 'ntp.conf.debian'
     }
   }
 
-  package { 'ntp'
-  ensure => installed,
+  package { 'ntp':
+    ensure => installed,
   }
 
-  file { 'ntp.conf'
+  file { 'ntp.conf':
   path => '/etc/ntp.conf',
   ensure => file,
-  require => Package['ntp']
-  source => "./$conf_file"
+  require => Package['ntp'],
+  source => "/vagrant/modules/ntp/files/$conf_file",
   }
 
   service { 'ntp':
