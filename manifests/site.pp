@@ -1,5 +1,4 @@
-$GO_SERVER = '127.0.0.1'
-$GO_SERVER_PORT = '8153'
+import vars.pp
 
 include ntp
 include java

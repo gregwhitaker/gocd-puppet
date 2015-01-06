@@ -1,0 +1,10 @@
+GO_SERVER=<%= scope.lookupvar('::GO_SERVER') %>
+export GO_SERVER
+GO_SERVER_PORT=<%= scope.lookupvar('::GO_SERVER_PORT') %>
+export GO_SERVER_PORT
+AGENT_WORK_DIR=/var/lib/go-agent
+export AGENT_WORK_DIR
+DAEMON=Y
+VNC=N
+JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386/jre
+export JAVA_HOME
