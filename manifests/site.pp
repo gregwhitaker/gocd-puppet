@@ -1,3 +1,6 @@
+$GO_SERVER = '127.0.0.1'
+$GO_SERVER_PORT = '8153'
+
 include ntp
 include java
 

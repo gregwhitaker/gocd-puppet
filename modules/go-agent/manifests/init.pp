@@ -6,6 +6,7 @@ class go-agent(
     ensure => directory,
   }
 
+  
   exec { 'go-agent-package':
     command => "/usr/bin/wget http://dl.bintray.com/gocd/gocd-deb/go-agent-$version.deb -O /opt/go-agent/go-agent.deb",
     cwd => '/opt/go-agent',
@@ -21,6 +22,15 @@ class go-agent(
     ensure => installed,
     source => '/opt/go-agent/go-agent.deb',
     require => Class['java']
+  } ->
+
+  file { 'go-agent-config':
+    path => '/etc/default/go-agent',
+    owner => 'go',
+    group => 'go',
+    mode => 0644,
+    content => template('go-agent/go-agent-template.erb'),
+    notify => Service['go-agent'],
   }
 
   service { 'go-agent':
