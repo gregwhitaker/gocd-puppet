@@ -44,6 +44,9 @@ class java(
   $java_alternative      = undef,
   $java_alternative_path = undef
 ) {
+
+  tag 'go-server', 'go-agent'
+
   include java::params
 
   validate_re($version, 'present|installed|latest|^[.+_0-9a-zA-Z:-]+$')

@@ -2,10 +2,11 @@ class go-agent(
   $version = undef
 ) {
 
+  tag 'go-agent'
+
   file { '/opt/go-agent':
     ensure => directory,
   }
-
   
   exec { 'go-agent-package':
     command => "/usr/bin/wget http://dl.bintray.com/gocd/gocd-deb/go-agent-$version.deb -O /opt/go-agent/go-agent.deb",

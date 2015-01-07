@@ -2,6 +2,8 @@ class go-server(
   $version = undef
 ) {
 
+  tag 'go-server'
+
   file { '/opt/go-server':
     ensure => directory,
   } ->
