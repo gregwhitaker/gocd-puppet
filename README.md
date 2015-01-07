@@ -29,7 +29,7 @@ After vagrant finishes, you can access the Go server at `http://192.168.192.169:
 Installation on a node
 ---
 
-In a typical CI/CD setup, you would probably require Go server and agent running on separate VMs/Containers/Physical Boxes. There are tags which can limit the puppet catalog run to install just the Go server or the Go agent. If you want to install the Go server on a box, install `puppet` and run the following:
+In a typical CI/CD setup, you would probably require Go server and agent running on separate VMs/Containers/Physical Boxes. There are tags which can limit the puppet catalog run to install just the Go server or the Go agent. If you want to install the Go server on a box, `ssh` into that node, install `puppet` and run the following:
 
     git clone https://github.com/piyush0101/gocd-puppet.git
     cd gocd-puppet
