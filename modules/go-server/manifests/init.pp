@@ -4,13 +4,12 @@ class go-server(
 
   file { '/opt/go-server':
     ensure => directory,
-  }
+  } ->
 
   exec { 'go-package':
     command => "/usr/bin/wget http://dl.bintray.com/gocd/gocd-deb/go-server-$version.deb -O /opt/go-server/go-server.deb",
     cwd => '/opt/go-server',
     creates => '/opt/go-server/go-server.deb',
-    require => File['/opt/go-server'],
   } ->
 
   package { 'unzip':

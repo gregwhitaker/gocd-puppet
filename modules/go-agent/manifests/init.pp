@@ -30,8 +30,7 @@ class go-agent(
     group => 'go',
     mode => 0644,
     content => template('go-agent/go-agent-template.erb'),
-    notify => Service['go-agent'],
-  }
+  } ~>
 
   service { 'go-agent':
     ensure => running,
