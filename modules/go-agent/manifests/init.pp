@@ -4,12 +4,17 @@ class go-agent(
 
   tag 'go-agent'
 
+  include go-agent::params
+
+  $package_url = $params::package_details['package_url']
+  $provider = $params::package_details['provider']
+
   file { '/opt/go-agent':
     ensure => directory,
   }
   
   exec { 'go-agent-package':
-    command => "/usr/bin/wget http://dl.bintray.com/gocd/gocd-deb/go-agent-$version.deb -O /opt/go-agent/go-agent.deb",
+    command => "/usr/bin/wget $package_url -O /opt/go-agent/go-agent.deb",
     cwd => '/opt/go-agent',
     creates => '/opt/go-agent/go-agent.deb',
   } ->
@@ -19,7 +24,7 @@ class go-agent(
   } ->
 
   package { 'go-agent':
-    provider => dpkg,
+    provider => $provider,
     ensure => installed,
     source => '/opt/go-agent/go-agent.deb',
     require => Class['java']
