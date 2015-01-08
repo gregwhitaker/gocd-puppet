@@ -25,3 +25,18 @@ Make sure you have [Vagrant][vagrant] and [Virtual Box][vbox] installed. To get 
 Wait while Vagrant sets up and provisions your VM.
 
 After vagrant finishes, you can access the Go server at `http://192.168.192.169:8153`. This should be a fully functional Go setup. There is a server and agent co located on the same VM.
+
+Installation on a node
+---
+
+In a typical CI/CD setup, you would probably require Go server and agent running on separate VMs/Containers/Physical Boxes. There are tags which can limit the puppet catalog run to install just the Go server or the Go agent. If you want to install the Go server on a box, `ssh` into that node, install `puppet` and run the following:
+
+    git clone https://github.com/piyush0101/gocd-puppet.git
+    cd gocd-puppet
+    puppet apply --tags go-server --modulepath=modules/ manifests/site.pp
+    
+To install Go agent, make sure that Go agent is pointing to the correct IP/Host & Port number of the Go server. Modify `manifests/vars.pp` file to reflect Go servers IP/Host & Port. After this, run the following on the machine you are wanting to install Go agent on. Make sure `puppet` is installed before running the commands:
+
+    git clone https://github.com/piyush0101/gocd-puppet.git
+    cd gocd-puppet
+    puppet apply --tags go-agent --modulepath=modules/ manifests/site.pp
