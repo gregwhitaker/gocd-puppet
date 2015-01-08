@@ -8,15 +8,16 @@ class go-agent(
 
   $package_url = $params::package_details['package_url']
   $provider = $params::package_details['provider']
+  $package_path = "/opt/go-agent/go-agent.$provider"
 
   file { '/opt/go-agent':
     ensure => directory,
   }
   
   exec { 'go-agent-package':
-    command => "/usr/bin/wget $package_url -O /opt/go-agent/go-agent.deb",
+    command => "/usr/bin/wget $package_url -O $package_path",
     cwd => '/opt/go-agent',
-    creates => '/opt/go-agent/go-agent.deb',
+    creates => $package_path,
   } ->
 
   exec { 'apt update':
@@ -26,7 +27,7 @@ class go-agent(
   package { 'go-agent':
     provider => $provider,
     ensure => installed,
-    source => '/opt/go-agent/go-agent.deb',
+    source => $package_path,
     require => Class['java']
   } ->
 
