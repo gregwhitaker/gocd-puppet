@@ -1,4 +1,6 @@
 class ntp {
+  tag 'go-server', 'go-agent'
+
   case $operatingsystem {
     centos, redhat: {
       $service_name= 'ntpd'
