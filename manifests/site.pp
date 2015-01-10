@@ -9,8 +9,3 @@ class { 'go-server':
 class { 'go-agent':
   version => '14.4.0-1356'
 }
-
-$scm_deps = ['git', 'subversion']
-package { $scm_deps:
-  ensure => installed
-}
