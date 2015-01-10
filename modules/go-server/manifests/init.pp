@@ -4,29 +4,32 @@ class go-server(
 
   tag 'go-server'
 
+  include go-server::params
+
+  $package_url = $params::package_details['package_url']
+  $provider = $params::package_details['provider']
+  $java = $params::package_details['java_class']
+  $package_path = "/opt/go-server/go-server.$provider"
+
   file { '/opt/go-server':
     ensure => directory,
   } ->
 
   exec { 'go-package':
-    command => "/usr/bin/wget http://dl.bintray.com/gocd/gocd-deb/go-server-$version.deb -O /opt/go-server/go-server.deb",
+    command => "/usr/bin/wget $package_url -O $package_path",
     cwd => '/opt/go-server',
-    creates => '/opt/go-server/go-server.deb',
+    creates => $package_path
   } ->
 
   package { 'unzip':
     ensure => installed,
   } ->
 
-  exec { 'apt-get update':
-    command => '/usr/bin/apt-get update',
-  } ->
-
   package { 'go-server':
-    provider => dpkg,
+    provider => $provider,
     ensure => installed,
-    source => '/opt/go-server/go-server.deb',
-    require => Class['java'],
+    source => $package_path,
+    require => $java
   }
 
   service { 'go-server':

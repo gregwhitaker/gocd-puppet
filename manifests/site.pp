@@ -1,6 +1,5 @@
 import 'vars.pp'
 
-include ntp
 include java
 
 class { 'go-server':
