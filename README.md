@@ -6,11 +6,11 @@ This is a repository to install GoCD using puppet.
 Getting Started
 ---
 
-Vagrant Box is based on the `hashicorp/precise32` box. If you do not have this box, add it with
+Vagrant Box is based on the `sles11` box. If you do not have this box, add it with
 
-    vagrant box add hashicorp/precise32
+    vagrant box add sles11 http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210.box
 
-Puppet module as of now has been tested only with debian distributions.
+Puppet module as of now has been tested only with SLES11 and Debian distributions.
 There may be some problems installing it on other package trees/distributions.
 
 Make sure you have [Vagrant][vagrant] and [Virtual Box][vbox] installed. To get a Go server and agent running on a local VM, run the following commands:
@@ -29,7 +29,7 @@ After vagrant finishes, you can access the Go server at `http://192.168.192.169:
 Installation on a node
 ---
 
-In a typical CI/CD setup, you would probably require Go server and agent running on separate VMs/Containers/Physical Boxes. There are tags which can limit the puppet catalog run to install just the Go server or the Go agent. If you want to install the Go server on a box, `ssh` into that node, install `puppet` and run the following:
+In a typical CI/CD setup, you would probably require Go server and agent running on separate VMs/Containers/Physical Boxes. There are tags which can limit the puppet catalog run to install just the Go server or the Go agent. If you want to install the Go server on a box, `ssh` into that node, install `puppet` and run the following. If you are running the SLES11 image from puppet labs used above, it has puppet already installed:
 
     git clone https://github.com/piyush0101/gocd-puppet.git
     cd gocd-puppet
