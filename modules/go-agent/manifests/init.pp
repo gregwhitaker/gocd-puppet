@@ -9,6 +9,7 @@ class go-agent(
   $package_url = $params::package_details['package_url']
   $provider = $params::package_details['provider']
   $java_class = $params::package_details['java_class']
+  $java_home = $params::package_details['java_home']
   $package_path = "/opt/go-agent/go-agent.$provider"
 
   file { '/opt/go-agent':
