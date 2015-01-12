@@ -1,5 +1,5 @@
-class go-server::params {
-  $version = $go-server::version
+class go_server::params {
+  $version = $go_server::version
   case $::osfamily {
     'Debian': {
       $package_details = {

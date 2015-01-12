@@ -1,10 +1,10 @@
-class go-agent(
+class go_agent(
   $version = undef
 ) {
 
   tag 'go-agent'
 
-  include go-agent::params
+  include go_agent::params
 
   $package_url = $params::package_details['package_url']
   $provider = $params::package_details['provider']
@@ -34,7 +34,7 @@ class go-agent(
     owner => 'go',
     group => 'go',
     mode => 0644,
-    content => template('go-agent/go-agent-template.erb'),
+    content => template('go_agent/go-agent-template.erb'),
   } ~>
 
   service { 'go-agent':

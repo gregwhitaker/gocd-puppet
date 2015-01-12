@@ -1,10 +1,10 @@
-class go-server(
+class go_server(
   $version = undef
 ) {
 
   tag 'go-server'
 
-  include go-server::params
+  include go_server::params
 
   $package_url = $params::package_details['package_url']
   $provider = $params::package_details['provider']

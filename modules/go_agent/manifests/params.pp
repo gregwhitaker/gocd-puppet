@@ -1,5 +1,5 @@
-class go-agent::params {
-  $version = $go-agent::version
+class go_agent::params {
+  $version = $go_agent::version
   case $::osfamily {
     'Debian': {
       $package_details = {
