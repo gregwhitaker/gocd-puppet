@@ -18,7 +18,8 @@ class go_server(
   exec { 'go-package':
     command => "/usr/bin/wget $package_url -O $package_path",
     cwd => '/opt/go-server',
-    creates => $package_path
+    creates => $package_path,
+    timeout => 6000
   } ->
 
   package { 'unzip':
