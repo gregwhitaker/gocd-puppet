@@ -6,9 +6,9 @@ This is a repository to install GoCD using puppet.
 Getting Started
 ---
 
-Vagrant Box is based on the `sles11` box. If you do not have this box, add it with
+Vagrant Box is based on the `hashicorp/precise32` box. If you do not have this box, add it with
 
-    vagrant box add sles11 http://puppet-vagrant-boxes.puppetlabs.com/sles-11sp1-x64-vbox4210.box
+    vagrant box add hashicorp/precise32
 
 Puppet module as of now has been tested only with SLES11 and Debian distributions.
 There may be some problems installing it on other package trees/distributions.
